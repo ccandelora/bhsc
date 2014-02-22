@@ -2,7 +2,7 @@
 
 $body-bg:  #ecf0f1;
 $font-family-sans-serif:	'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$navbar-height:	45px;
+$navbar-height:	100px;
 $navbar-default-bg:	white;
 $navbar-default-bg:	white;
 $navbar-default-brand-color:	#c0392b;
@@ -16,5 +16,8 @@ $jumbotron-bg:	white;
 }
 
 .navbar-brand {
-     font-weight: bold;
+ padding: 0;
+ margin-top: 10px;
+ margin-bottom :10px;
+ margin-left: 20px;
 }

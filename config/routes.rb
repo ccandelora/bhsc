@@ -1,6 +1,13 @@
 Bhsc::Application.routes.draw do
   devise_for :users
   root 'pages#home'
+  get 'contact' => 'pages#contact'
+  get 'guest' => 'pages#guest'
+  get 'library' => 'pages#library'
+  get 'membership' => 'pages#membership'
+  get 'notes' =>  'pages#note'
+  get 'race' => 'pages#race'
+  get 'social'=> 'pages#social'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
