@@ -1,4 +1,8 @@
 Bhsc::Application.routes.draw do
+  resources :reservation_weeks
+
+  resources :reservations
+
   devise_for :users
   root 'pages#home'
   get 'contact' => 'pages#contact'

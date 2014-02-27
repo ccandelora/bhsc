@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  res_date: 
+  note: MyText
+
+two:
+  res_date: 
+  note: MyText

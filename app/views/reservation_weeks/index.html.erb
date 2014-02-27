@@ -1,0 +1,29 @@
+<h1>Listing reservation_weeks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Res date</th>
+      <th>Note</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservation_weeks.each do |reservation_week| %>
+      <tr>
+        <td><%= reservation_week.res_date %></td>
+        <td><%= reservation_week.note %></td>
+        <td><%= link_to 'Show', reservation_week %></td>
+        <td><%= link_to 'Edit', edit_reservation_week_path(reservation_week) %></td>
+        <td><%= link_to 'Destroy', reservation_week, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reservation week', new_reservation_week_path %>

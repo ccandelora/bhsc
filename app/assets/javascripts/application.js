@@ -16,4 +16,6 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require masonry/jquery.masonry
+//= require moment
+//= require daterangepicker
 //= require_tree .

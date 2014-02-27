@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reservation_date: 
+  name: MyString
+  wed: false
+  thur: false
+  fri: false
+  sat: false
+  sun: false
+  mon: false
+  tue: false
+  dinner: false
+  comment: MyText
+
+two:
+  reservation_date: 
+  name: MyString
+  wed: false
+  thur: false
+  fri: false
+  sat: false
+  sun: false
+  mon: false
+  tue: false
+  dinner: false
+  comment: MyText

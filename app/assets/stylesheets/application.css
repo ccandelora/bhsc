@@ -10,5 +10,7 @@
  *
  *= require_self
  *= require 'masonry/transitions'
+ *= require daterangepicker-bs3.css
+ *= require font-awesome
  *= require_tree .
  */

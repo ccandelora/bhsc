@@ -32,6 +32,8 @@ GEM
       nokogiri (>= 1.4.4, < 1.6.0)
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
+    bootstrap-daterangepicker-rails (0.0.8)
+      railties (>= 3.1)
     bootstrap-sass (3.1.0.2)
       sass (~> 3.2)
     builder (3.1.4)
@@ -55,6 +57,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    font-awesome-rails (4.0.3.1)
+      railties (>= 3.2, < 5.0)
     hike (1.2.3)
     i18n (0.6.9)
     jbuilder (1.5.3)
@@ -158,9 +162,11 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk (~> 1.20.0)
+  bootstrap-daterangepicker-rails
   bootstrap-sass
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.2)
+  font-awesome-rails
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
