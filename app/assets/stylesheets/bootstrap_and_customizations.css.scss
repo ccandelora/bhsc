@@ -21,3 +21,10 @@ $jumbotron-bg:	white;
  margin-bottom :10px;
  margin-left: 20px;
 }
+.clear {
+	clear:both;
+}
+
+.form-horizontal .control-label {
+text-align: right;
+}

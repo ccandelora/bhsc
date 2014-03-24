@@ -1,6 +1,8 @@
 class ReservationWeeksController < ApplicationController
   before_action :set_reservation_week, only: [:show, :edit, :update, :destroy]
 
+  before_filter :require_login
+
   # GET /reservation_weeks
   # GET /reservation_weeks.json
   def index
@@ -70,5 +72,11 @@ class ReservationWeeksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_week_params
       params.require(:reservation_week).permit(:res_date, :note)
+    end
+
+    def require_login
+      unless current_user
+        redirect_to new_user_session_url
+      end
     end
 end

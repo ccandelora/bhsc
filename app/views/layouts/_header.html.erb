@@ -25,6 +25,7 @@
         <li><%= link_to 'Social Events', social_path %></li>
         <li><%= link_to 'Guests', guest_path %></li>
         <% if user_signed_in? %>
+          <li><%= link_to 'Reservations', reservations_path %></li>
           <li><%= link_to 'Library', library_path %></li>
           <li><%= link_to 'Notices', notes_path %></li>
           <li><%= link_to 'Account Settings', edit_user_registration_path %></li>

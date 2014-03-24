@@ -11,20 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227020409) do
+ActiveRecord::Schema.define(version: 20140318212106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "reservation_weeks", force: true do |t|
-    t.tsrange  "res_date"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "res_date"
   end
 
   create_table "reservations", force: true do |t|
-    t.tsrange  "reservation_date"
     t.string   "name"
     t.boolean  "wed"
     t.boolean  "thur"
@@ -41,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140227020409) do
     t.integer  "reservation_week_id"
     t.string   "sex"
     t.string   "res_member_type"
+    t.date     "reservation_date"
   end
 
   add_index "reservations", ["reservation_week_id"], name: "index_reservations_on_reservation_week_id", using: :btree
@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(version: 20140227020409) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

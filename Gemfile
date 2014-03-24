@@ -22,7 +22,13 @@ gem 'masonry-rails', '~> 0.2.0'
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'bootstrap-daterangepicker-rails'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem 'binding_of_caller'
+gem 'simple_form'
+
+group :development do
+  gem "better_errors"
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

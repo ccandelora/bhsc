@@ -1,20 +1,20 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
 
+  before_filter :require_login
+
   # GET /reservations
-  # GET /reservations.json
   def index
     @reservations = Reservation.all
   end
 
   # GET /reservations/1
-  # GET /reservations/1.json
   def show
   end
 
   # GET /reservations/new
   def new
-    @reservation = Reservation.new
+    @reservation = current_user.reservations.build
   end
 
   # GET /reservations/1/edit
@@ -22,37 +22,30 @@ class ReservationsController < ApplicationController
   end
 
   # POST /reservations
-  # POST /reservations.json
   def create
-    @reservation = Reservation.new(reservation_params)
+    @reservation = current_user.reservations.build(reservation_params)
 
-    respond_to do |format|
-      if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @reservation }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
+    if !reservation_params[:reservation_date].empty?
+      @reservation.reservation_week_id = get_reservation_week.id
+    end
+
+    if @reservation.save
+      redirect_to @reservation, notice: 'Reservation was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /reservations/1
-  # PATCH/PUT /reservations/1.json
   def update
-    respond_to do |format|
-      if @reservation.update(reservation_params)
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
+    if @reservation.update(reservation_params)
+      redirect_to @reservation, notice: 'Reservation was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
   # DELETE /reservations/1
-  # DELETE /reservations/1.json
   def destroy
     @reservation.destroy
     respond_to do |format|
@@ -67,8 +60,27 @@ class ReservationsController < ApplicationController
       @reservation = Reservation.find(params[:id])
     end
 
+    def get_reservation_week
+      if !reservation_params[:reservation_date].empty?
+        resdate = reservation_params[:reservation_date]
+        @res = ReservationWeek.find_by_res_date(resdate)
+
+        if !@res
+          @res = ReservationWeek.create(res_date: resdate)
+        end
+
+        @res
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:reservation_date, :name, :wed, :thur, :fri, :sat, :sun, :mon, :tue, :dinner, :comment)
+      params.require(:reservation).permit(:reservation_date, :name, :wed, :thur, :fri, :sat, :sun, :mon, :tue, :dinner, :comment, :sex, :res_member_type)
+    end
+
+    def require_login
+      unless current_user
+        redirect_to new_user_session_url
+      end
     end
 end
