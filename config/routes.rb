@@ -1,7 +1,13 @@
 Bhsc::Application.routes.draw do
-  resources :reservation_weeks
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  resources :reservation_weeks do
+    get 'pick', on: :collection
+  end
 
-  resources :reservations
+  resources :reservations do
+    get 'pick', on: :collection
+    post 'lookup', on: :collection
+  end
 
   devise_for :users
   root 'pages#home'
@@ -12,6 +18,7 @@ Bhsc::Application.routes.draw do
   get 'notes' =>  'pages#note'
   get 'race' => 'pages#race'
   get 'social'=> 'pages#social'
+  #get 'reservations/pick', to: 'reservations#pick', as: :reservation_pick
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

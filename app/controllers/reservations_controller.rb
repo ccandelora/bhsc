@@ -5,7 +5,17 @@ class ReservationsController < ApplicationController
 
   # GET /reservations
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.first
+  end
+
+  def pick
+    #@reservations = Reservation.all
+    @reservations = current_user.reservations.where("reservation_date >= ?", Date.today).order("reservation_date ASC")
+  end
+
+  def lookup
+    @reservations = Reservation.all.where("reservation_date = ?", reservation_params[:reservation_date]).order("id ASC")
+    get_reservation_week_detail
   end
 
   # GET /reservations/1
@@ -71,6 +81,12 @@ class ReservationsController < ApplicationController
 
         @res
       end
+    end
+
+    def get_reservation_week_detail
+      resdate = reservation_params[:reservation_date]
+      @reservation_week = ReservationWeek.find_by_res_date(resdate)
+      @reservation_week
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

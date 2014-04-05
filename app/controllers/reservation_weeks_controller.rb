@@ -14,6 +14,10 @@ class ReservationWeeksController < ApplicationController
   def show
   end
 
+  def pick
+    @reservation_weeks = ReservationWeek.all.where("res_date >= ?", Date.today).order("res_date ASC")
+  end
+
   # GET /reservation_weeks/new
   def new
     @reservation_week = ReservationWeek.new
@@ -26,15 +30,20 @@ class ReservationWeeksController < ApplicationController
   # POST /reservation_weeks
   # POST /reservation_weeks.json
   def create
-    @reservation_week = ReservationWeek.new(reservation_week_params)
-
-    respond_to do |format|
-      if @reservation_week.save
-        format.html { redirect_to @reservation_week, notice: 'Reservation week was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @reservation_week }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @reservation_week.errors, status: :unprocessable_entity }
+    if !find_reservation_week_detail.nil?
+      respond_to do |format|
+        format.html { redirect_to edit_reservation_week_path(@reservation_week) }
+      end
+    else
+      @reservation_week = ReservationWeek.new(reservation_week_params)
+      respond_to do |format|
+        if @reservation_week.save
+          format.html { redirect_to @reservation_week, notice: 'Reservation week was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @reservation_week }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @reservation_week.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -72,6 +81,11 @@ class ReservationWeeksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_week_params
       params.require(:reservation_week).permit(:res_date, :note)
+    end
+
+    def find_reservation_week_detail
+      @reservation_week = ReservationWeek.find_by_res_date(reservation_week_params[:res_date])
+      @reservation_week
     end
 
     def require_login

@@ -1,29 +1,27 @@
-<h1>Listing reservation_weeks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Res date</th>
-      <th>Note</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reservation_weeks.each do |reservation_week| %>
-      <tr>
-        <td><%= reservation_week.res_date %></td>
-        <td><%= reservation_week.note %></td>
-        <td><%= link_to 'Show', reservation_week %></td>
-        <td><%= link_to 'Edit', edit_reservation_week_path(reservation_week) %></td>
-        <td><%= link_to 'Destroy', reservation_week, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Reservation week', new_reservation_week_path %>
+<div>
+  <h1>Reservation Notes</h1>
+</div>
+<div id="res" class="transitions-enabled">
+  <div class="box panel panel-default">
+    <div class="panel panel-body">
+      <div class="action">
+        <%= link_to new_reservation_week_path do %>
+          <button class="btn btn-default btn-lg" >
+            <span class="glyphicon glyphicon-plus"></span> Add
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="box panel panel-default">
+    <div class="panel panel-body">
+      <div class="action">
+          <%= link_to pick_reservation_weeks_path do %>
+            <button class="btn btn-default btn-lg" >
+              <span class="glyphicon glyphicon-pencil"></span>Edit
+            </button>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

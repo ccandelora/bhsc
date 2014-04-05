@@ -25,6 +25,7 @@ gem 'bootstrap-daterangepicker-rails'
 gem 'font-awesome-rails'
 gem 'binding_of_caller'
 gem 'simple_form'
+gem 'bootsy'
 
 group :development do
   gem "better_errors"
