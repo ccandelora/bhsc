@@ -28,22 +28,36 @@
   </div>
   <%= f.input :reservation_date, as: :hidden %>
   <%= f.input :name %>
-  <p><%= f.collection_radio_buttons :sex, [['Male', 'Male'], ['Female', 'Female']], :first, :last %></p>
-  <p><%= f.collection_radio_buttons :res_member_type, [['Full Member', 'Full Member'], ['Associate Member', 'Associate Member'], ['Race Member', 'Race Member'], ['Guest', 'Guest']], :first, :last %></p>
-  <%= f.input :wed, :as => :boolean%>
-  <%= f.input :thur, :as => :boolean %>
-  <%= f.input :fri, :as => :boolean %>
-  <%= f.input :sat, :as => :boolean %>
-  <%= f.input :sun, :as => :boolean %>
-  <%= f.input :mon, :as => :boolean %>
-  <%= f.input :tue, :as => :boolean %>
-  <%= f.input :dinner, :as => :boolean %>
-  <div class="clear"></div>
-  <%= f.input :comment, as: :bootsy %>
+  <div class="box panel panel-default">
+    <h3> Sex </h3>
+    <div class="panel panel-body">
+      <%= f.collection_radio_buttons :sex, [['Male', 'Male'], ['Female', 'Female']], :first, :last %>
+    </div>
+  </div>
+  <div class="box panel panel-default">
+    <h3>Member Type</h3>
+    <div class="panel panel-body">
+      <%= f.collection_radio_buttons :res_member_type, [['Full Member', 'Full Member'], ['Associate Member', 'Associate Member'], ['Race Member', 'Race Member'], ['Guest', 'Guest']], :first, :last %>
+    </div>
+  </div>
+  <div class="box panel panel-default">
+    <h3> Select the days you are staying and if you want the house dinner.</h3>
+    <div class="panel panel-body">
+      <%= f.input_field :wed, :as => :boolean, :inline_label => 'Wednesday' %>
+      <%= f.input_field :thur, :as => :boolean, :inline_label => 'Thursady' %>
+      <%= f.input_field :fri, :as => :boolean, :inline_label => 'Friday' %>
+      <%= f.input_field :sat, :as => :boolean, :inline_label => 'Saturday' %>
+      <%= f.input_field :sun, :as => :boolean, :inline_label => 'Sunday' %>
+      <%= f.input_field :mon, :as => :boolean , :inline_label => 'Monday' %>
+      <%= f.input_field :tue, :as => :boolean, :inline_label => 'Tuesday' %>
+      <%= f.input_field :dinner, :as => :boolean, :inline_label => 'Dinner' %>
+    </div>
+  </div>
+  <p>
+    <%= f.input :comment, as: :bootsy %>
+  </p>
   <%= f.button :submit, 'Create Reservation', class: 'btn btn-primary' %>
 <% end %>
-<p></p>
-
 <script type="text/javascript">
 var a = moment().day("Wednessday").week(Number).format('MMMM D, YYYY').toString() + ' - ' + moment().day("Wednessday").week(Number).add('days', 6).format('MMMM D, YYYY').toString();
 var b = moment().day("Wednessday").week(Number).add('days', 7).format('MMMM D, YYYY').toString() + ' - ' + moment().day("Wednessday").week(Number).add('days', 13).format('MMMM D, YYYY').toString();
