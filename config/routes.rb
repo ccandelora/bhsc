@@ -1,4 +1,7 @@
 Bhsc::Application.routes.draw do
+
+  devise_for :users
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   resources :reservation_weeks do
     get 'pick', on: :collection
@@ -9,7 +12,7 @@ Bhsc::Application.routes.draw do
     post 'lookup', on: :collection
   end
 
-  devise_for :users
+
   root 'pages#home'
   get 'contact' => 'pages#contact'
   get 'guest' => 'pages#guest'
