@@ -31,20 +31,20 @@
   <div class="box panel panel-default">
     <h3> Sex </h3>
     <div class="panel panel-body">
-      <%= f.collection_radio_buttons :sex, [['Male', 'Male'], ['Female', 'Female']], :first, :last %>
+      <%= f.collection_radio_buttons :sex, [['Male', 'Male'], ['Female', 'Female']], :first, :last, :item_wrapper_tag => :div %>
     </div>
   </div>
   <div class="box panel panel-default">
     <h3>Member Type</h3>
     <div class="panel panel-body">
-      <%= f.collection_radio_buttons :res_member_type, [['Full Member', 'Full Member'], ['Associate Member', 'Associate Member'], ['Race Member', 'Race Member'], ['Guest', 'Guest']], :first, :last %>
+      <%= f.collection_radio_buttons :res_member_type, [['Full Member', 'Full Member'], ['Associate Member', 'Associate Member'], ['Race Member', 'Race Member'], ['Guest', 'Guest']], :first, :last, :item_wrapper_tag => :div %>
     </div>
   </div>
   <div class="box panel panel-default">
     <h3> Select the days you are staying and if you want the house dinner.</h3>
     <div class="panel panel-body">
       <%= f.input_field :wed, :as => :boolean, :inline_label => 'Wednesday' %>
-      <%= f.input_field :thur, :as => :boolean, :inline_label => 'Thursady' %>
+      <%= f.input_field :thur, :as => :boolean, :inline_label => 'Thursday' %>
       <%= f.input_field :fri, :as => :boolean, :inline_label => 'Friday' %>
       <%= f.input_field :sat, :as => :boolean, :inline_label => 'Saturday' %>
       <%= f.input_field :sun, :as => :boolean, :inline_label => 'Sunday' %>

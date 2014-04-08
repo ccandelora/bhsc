@@ -70,7 +70,7 @@
           <% else %>
             <td><span class="glyphicon glyphicon-ban-circle"></span></td>
           <% end %>
-          <td><%= reservation.comment %></td>
+          <td><%= reservation.comment.html_safe %></td>
           <td>
             <%= link_to edit_reservation_path(reservation) do %>
               <span class="glyphicon glyphicon-edit"></span> Edit

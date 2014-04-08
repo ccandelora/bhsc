@@ -68,7 +68,7 @@
           <% else %>
             <td><span class="glyphicon glyphicon-ban-circle"></span></td>
           <% end %>
-          <td><%= reservation.comment %></td>
+          <td><%= reservation.comment.html_safe %></td>
         </tr>
       <% end %>
     </tbody>
